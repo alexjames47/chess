@@ -24,6 +24,7 @@ public class ChessBoard {
     public void addPiece(ChessPosition position, ChessPiece piece) {
         //throw new RuntimeException("Not implemented");
         ChessPiece temp = new ChessPiece(piece.getTeamColor(), piece.getPieceType());
+        temp.pP = position;
         cps.add(temp);
     }
 
@@ -35,7 +36,14 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        throw new RuntimeException("Not implemented");
+        //throw new RuntimeException("Not implemented");
+        for(ChessPiece p : cps){
+            if(p.pP.equals(position))
+            {
+                return p;
+            }
+        }
+        throw new RuntimeException("No Piece Found");
     }
 
     /**
