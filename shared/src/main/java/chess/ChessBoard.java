@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public class ChessBoard {
 
-    ArrayList<ChessPiece> cps = new ArrayList<>();
+    //ArrayList<ChessPiece> cps = new ArrayList<>();
 
     ChessPiece[][] board = new ChessPiece[8][8];
     public ChessBoard() {
@@ -30,7 +30,7 @@ public class ChessBoard {
         int r = position.getRow();
         int c = position.getColumn();
         board[r][c] = temp;
-        cps.add(temp);
+        //cps.add(temp);
     }
 
     /**
@@ -42,12 +42,9 @@ public class ChessBoard {
      */
     public ChessPiece getPiece(ChessPosition position) {
         //throw new RuntimeException("Not implemented");
-        for(ChessPiece p : cps){
-            if(p.pP.equals(position))
-            {
-                return p;
-            }
-        }
+        var temp1 = position.getRow();
+        var temp2 = position.getColumn();
+        if(board[temp1][temp2] != null) return board[temp1][temp2];
         throw new RuntimeException("No Piece Found");
     }
 
