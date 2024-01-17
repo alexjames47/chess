@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Collection;
+import java.util.Vector;
 
 /**
  * Represents a single chess piece
@@ -54,7 +55,60 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        throw new RuntimeException("Not implemented");
-
+        //throw new RuntimeException("Not implemented");
+        Vector<ChessMove> myMoves = new Vector<ChessMove>();
+        if (board.board[myPosition.getRow()][myPosition.getColumn()].getPieceType() == PieceType.BISHOP)
+        {
+            ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
+            boolean checkDirections = true;
+            while(checkDirections)
+            {
+                if(myPosition.getRow()-1>=0 && myPosition.getColumn()-1>=0)
+                {
+                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
+                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
+                else checkDirections = false;
+            }
+            checkDirections = true;
+            while(checkDirections)
+            {
+                if(myPosition.getRow()-1>=0 && myPosition.getColumn()+1<8)
+                {
+                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()+1);
+                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
+                else checkDirections = false;
+            }
+            checkDirections = true;
+            while(checkDirections)
+            {
+                if(myPosition.getRow()+1<8 && myPosition.getColumn()+1<8)
+                {
+                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()+1);
+                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
+                else checkDirections = false;
+            }
+            checkDirections = true;
+            while(checkDirections)
+            {
+                if(myPosition.getRow()+1<8 && myPosition.getColumn()-1>=0)
+                {
+                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
+                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
+                else checkDirections = false;
+            }
+        }
+        return myMoves;
     }
 }
