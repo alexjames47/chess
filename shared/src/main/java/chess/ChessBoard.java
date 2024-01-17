@@ -11,6 +11,8 @@ import java.util.ArrayList;
 public class ChessBoard {
 
     ArrayList<ChessPiece> cps = new ArrayList<>();
+
+    ChessPiece[][] board = new ChessPiece[8][8];
     public ChessBoard() {
 
     }
@@ -25,6 +27,9 @@ public class ChessBoard {
         //throw new RuntimeException("Not implemented");
         ChessPiece temp = new ChessPiece(piece.getTeamColor(), piece.getPieceType());
         temp.pP = position;
+        int r = position.getRow();
+        int c = position.getColumn();
+        board[r][c] = temp;
         cps.add(temp);
     }
 
