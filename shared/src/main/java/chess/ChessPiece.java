@@ -123,7 +123,8 @@ public class ChessPiece {
     public Collection<ChessMove> kingMoves(ChessBoard board, ChessPosition myPosition) {
         HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn());
-        if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() - 1 > 0) {
+        if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() - 1 > 0) // NW
+        {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() - 1);
             if (!board.SpaceIsEmpty(newPosition)) {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
@@ -134,9 +135,16 @@ public class ChessPiece {
                     myPosition = newPosition;
                 }
             }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
         }
         myPosition = startingPosition;
-        if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() + 1 < 9) {
+        if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() + 1 < 9) //NE
+        {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() + 1);
             if (!board.SpaceIsEmpty(newPosition)) {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
@@ -147,9 +155,16 @@ public class ChessPiece {
                     myPosition = newPosition;
                 }
             }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
         }
         myPosition = startingPosition;
-        if (myPosition.getRow() + 1 < 9 && myPosition.getColumn() + 1 < 9) {
+        if (myPosition.getRow() + 1 < 9 && myPosition.getColumn() + 1 < 9)  //SE
+        {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() + 1);
             if (!board.SpaceIsEmpty(newPosition)) {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
@@ -160,9 +175,16 @@ public class ChessPiece {
                     myPosition = newPosition;
                 }
             }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
         }
         myPosition = startingPosition;
-        if (myPosition.getRow() + 1 < 9 && myPosition.getColumn() - 1 > 0) {
+        if (myPosition.getRow() + 1 < 9 && myPosition.getColumn() - 1 > 0) //SW
+        {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() - 1);
             if (!board.SpaceIsEmpty(newPosition)) {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
@@ -172,6 +194,12 @@ public class ChessPiece {
                     myMoves.add(temp);
                     myPosition = newPosition;
                 }
+            }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
             }
         }
         myPosition = startingPosition;
@@ -187,6 +215,12 @@ public class ChessPiece {
                     myPosition = newPosition;
                 }
             }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
         }
         myPosition = startingPosition;
         if (myPosition.getRow() + 1 < 9) //S
@@ -200,6 +234,12 @@ public class ChessPiece {
                     myMoves.add(temp);
                     myPosition = newPosition;
                 }
+            }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
             }
         }
         myPosition = startingPosition;
@@ -215,6 +255,12 @@ public class ChessPiece {
                     myPosition = newPosition;
                 }
             }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
         }
         myPosition = startingPosition;
         if (myPosition.getColumn() - 1 > 0) //W
@@ -228,6 +274,12 @@ public class ChessPiece {
                     myMoves.add(temp);
                     myPosition = newPosition;
                 }
+            }
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
             }
         }
         return myMoves;
