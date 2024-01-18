@@ -1,6 +1,6 @@
 package chess;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 
 /**
@@ -91,15 +91,14 @@ public class ChessBoard {
             j-=2;
             temp = ChessGame.TeamColor.BLACK;
         }
-        int i = 0;
+        //j = 0;
     }
 
     public boolean SpaceIsEmpty(ChessPosition position)
     {
         var temp1 = position.getRow();
         var temp2 = position.getColumn();
-        if(board[temp1-1][temp2-1] != null) return false;
-        else return true;
+        return board[temp1 - 1][temp2 - 1] == null;
     }
 
     public ChessGame.TeamColor GetSpaceColor(ChessPosition position)
@@ -114,11 +113,11 @@ public class ChessBoard {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ChessBoard that)) return false;
-        return Arrays.equals(board, that.board);
+        return Arrays.deepEquals(board, that.board);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(board);
+        return Arrays.deepHashCode(board);
     }
 }
