@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Vector;
 
 /**
@@ -56,14 +57,14 @@ public class ChessPiece {
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         //throw new RuntimeException("Not implemented");
-        Vector<ChessMove> myMoves = new Vector<ChessMove>();
-        if (board.board[myPosition.getRow()][myPosition.getColumn()].getPieceType() == PieceType.BISHOP)
+        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        if (board.board[myPosition.getRow()-1][myPosition.getColumn()-1].getPieceType() == PieceType.BISHOP)
         {
             ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
             boolean checkDirections = true;
             while(checkDirections)
             {
-                if(myPosition.getRow()-1>=0 && myPosition.getColumn()-1>=0)
+                if(myPosition.getRow()-1>0 && myPosition.getColumn()-1>0)
                 {
                     ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
                     ChessMove temp = new ChessMove(startingPosition,newPosition,null);
@@ -72,10 +73,11 @@ public class ChessPiece {
                 }
                 else checkDirections = false;
             }
+            myPosition = startingPosition;
             checkDirections = true;
             while(checkDirections)
             {
-                if(myPosition.getRow()-1>=0 && myPosition.getColumn()+1<8)
+                if(myPosition.getRow()-1>0 && myPosition.getColumn()+1<9)
                 {
                     ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()+1);
                     ChessMove temp = new ChessMove(startingPosition,newPosition,null);
@@ -84,10 +86,11 @@ public class ChessPiece {
                 }
                 else checkDirections = false;
             }
+            myPosition = startingPosition;
             checkDirections = true;
             while(checkDirections)
             {
-                if(myPosition.getRow()+1<8 && myPosition.getColumn()+1<8)
+                if(myPosition.getRow()+1<9 && myPosition.getColumn()+1<9)
                 {
                     ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()+1);
                     ChessMove temp = new ChessMove(startingPosition,newPosition,null);
@@ -96,18 +99,20 @@ public class ChessPiece {
                 }
                 else checkDirections = false;
             }
+            myPosition = startingPosition;
             checkDirections = true;
             while(checkDirections)
             {
-                if(myPosition.getRow()+1<8 && myPosition.getColumn()-1>=0)
+                if(myPosition.getRow()+1<9 && myPosition.getColumn()-1>0)
                 {
-                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
+                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()-1);
                     ChessMove temp = new ChessMove(startingPosition,newPosition,null);
                     myMoves.add(temp);
                     myPosition = newPosition;
                 }
                 else checkDirections = false;
             }
+            myPosition = startingPosition;
         }
         return myMoves;
     }

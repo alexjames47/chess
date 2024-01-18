@@ -29,7 +29,7 @@ public class ChessBoard {
         temp.pP = position;
         int r = position.getRow();
         int c = position.getColumn();
-        board[r][c] = temp;
+        board[r-1][c-1] = temp;
         //cps.add(temp);
     }
 
@@ -44,7 +44,7 @@ public class ChessBoard {
         //throw new RuntimeException("Not implemented");
         var temp1 = position.getRow();
         var temp2 = position.getColumn();
-        if(board[temp1][temp2] != null) return board[temp1][temp2];
+        if(board[temp1-1][temp2-1] != null) return board[temp1-1][temp2-1];
         throw new RuntimeException("No Piece Found");
     }
 
