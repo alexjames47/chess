@@ -74,7 +74,7 @@ public class ChessPiece {
 
     public Collection<ChessMove> bishopMoves(ChessBoard board, ChessPosition myPosition)
     {
-        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
         while(myPosition.getRow()-1>0 && myPosition.getColumn()-1>0) //NW
         {
@@ -115,29 +115,29 @@ public class ChessPiece {
             myPosition = newPosition;
             if(!board.SpaceIsEmpty(myPosition)){break;}
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         return myMoves;
     }
     public Collection<ChessMove> kingMoves(ChessBoard board, ChessPosition myPosition) {
-        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn());
         if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() - 1 > 0) // NW
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() - 1);
             if (!board.SpaceIsEmpty(newPosition)) {
-                if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
+                if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {/*lambda*/}
                 else
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
         myPosition = startingPosition;
@@ -150,17 +150,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() + 1 < 9 && myPosition.getColumn() + 1 < 9)  //SE
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() + 1);
@@ -170,17 +170,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() + 1 < 9 && myPosition.getColumn() - 1 > 0) //SW
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() - 1);
@@ -190,17 +190,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() - 1 > 0) //N
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
@@ -210,17 +210,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() + 1 < 9) //S
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
@@ -230,17 +230,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getColumn() + 1 < 9) //E
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn() + 1);
@@ -250,17 +250,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getColumn() - 1 > 0) //W
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn() - 1);
@@ -270,20 +270,20 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
         return myMoves;
     }
     public Collection<ChessMove> knightMoves(ChessBoard board, ChessPosition myPosition){
-        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn());
         if (myPosition.getRow() + 2 < 9 && myPosition.getColumn() + 1 < 9)
         {
@@ -294,14 +294,14 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
         myPosition = startingPosition;
@@ -314,17 +314,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() + 2 < 9)
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn() + 2);
@@ -334,17 +334,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() - 2 > 0 && myPosition.getColumn() + 1 < 9)
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 2, myPosition.getColumn() + 1);
@@ -354,17 +354,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() - 2 > 0 && myPosition.getColumn() - 1 > 0)
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 2, myPosition.getColumn()-1);
@@ -374,17 +374,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() -2 > 0)
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn()-2);
@@ -394,17 +394,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() + 1 < 9 && myPosition.getColumn() -2>0)
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn() -2);
@@ -414,17 +414,17 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() + 2 < 9 && myPosition.getColumn() - 1 > 0)
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow()+2, myPosition.getColumn() - 1);
@@ -434,14 +434,14 @@ public class ChessPiece {
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
             else
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
         return myMoves;
@@ -456,7 +456,7 @@ public class ChessPiece {
 
     public Collection<ChessMove> whitePawnMoves(ChessBoard board, ChessPosition myPosition)
     {
-        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn());
         if (myPosition.getRow() + 1 > 0 && myPosition.getColumn() - 1 > 0) // SW
         {
@@ -475,13 +475,13 @@ public class ChessPiece {
                         myMoves.add(temp3);
                         ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
                         myMoves.add(temp4);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                     else
                     {
                         ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                         myMoves.add(temp);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                 }
             }
@@ -504,18 +504,18 @@ public class ChessPiece {
                         myMoves.add(temp3);
                         ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
                         myMoves.add(temp4);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                     else
                     {
                         ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                         myMoves.add(temp);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                 }
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() + 1 > 0)  //S
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
@@ -532,17 +532,17 @@ public class ChessPiece {
                     myMoves.add(temp3);
                     ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
                     myMoves.add(temp4);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
                 else
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() == 2) //InitialMove
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 2, myPosition.getColumn());
@@ -551,16 +551,16 @@ public class ChessPiece {
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         return myMoves;
     }
 
     public Collection<ChessMove> blackPawnMoves(ChessBoard board, ChessPosition myPosition)
     {
-        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn());
         if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() - 1 > 0) // NW
         {
@@ -579,13 +579,13 @@ public class ChessPiece {
                         myMoves.add(temp3);
                         ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
                         myMoves.add(temp4);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                     else
                     {
                         ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                         myMoves.add(temp);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                 }
             }
@@ -608,18 +608,18 @@ public class ChessPiece {
                         myMoves.add(temp3);
                         ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
                         myMoves.add(temp4);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                     else
                     {
                         ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                         myMoves.add(temp);
-                        myPosition = newPosition;
+                        //myPosition = newPosition;
                     }
                 }
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() - 1 > 0)  //N
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
@@ -636,17 +636,17 @@ public class ChessPiece {
                     myMoves.add(temp3);
                     ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
                     myMoves.add(temp4);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
                 else
                 {
                     ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                     myMoves.add(temp);
-                    myPosition = newPosition;
+                    //myPosition = newPosition;
                 }
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         if (myPosition.getRow() == 7) //InitialMove
         {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 2, myPosition.getColumn());
@@ -655,15 +655,15 @@ public class ChessPiece {
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
-                myPosition = newPosition;
+                //myPosition = newPosition;
             }
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         return myMoves;
     }
     public Collection<ChessMove> queenMoves(ChessBoard board, ChessPosition myPosition)
     {
-        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
         while(myPosition.getRow()-1>0 && myPosition.getColumn()-1>0)
         {
@@ -748,7 +748,7 @@ public class ChessPiece {
     }
     public Collection<ChessMove> rookMoves(ChessBoard board, ChessPosition myPosition)
     {
-        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
         while(myPosition.getRow()-1>0) //N
         {
@@ -789,7 +789,7 @@ public class ChessPiece {
             myPosition = newPosition;
             if(!board.SpaceIsEmpty(myPosition)){break;}
         }
-        myPosition = startingPosition;
+        //myPosition = startingPosition;
         return myMoves;
     }
 }
