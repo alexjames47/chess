@@ -61,56 +61,36 @@ public class ChessPiece {
         if (board.board[myPosition.getRow()-1][myPosition.getColumn()-1].getPieceType() == PieceType.BISHOP)
         {
             ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
-            boolean checkDirections = true;
-            while(checkDirections)
+            while(myPosition.getRow()-1>0 && myPosition.getColumn()-1>0)
             {
-                if(myPosition.getRow()-1>0 && myPosition.getColumn()-1>0)
-                {
-                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
-                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
-                }
-                else checkDirections = false;
+                ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
+                ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                myMoves.add(temp);
+                myPosition = newPosition;
             }
             myPosition = startingPosition;
-            checkDirections = true;
-            while(checkDirections)
+            while(myPosition.getRow()-1>0 && myPosition.getColumn()+1<9)
             {
-                if(myPosition.getRow()-1>0 && myPosition.getColumn()+1<9)
-                {
-                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()+1);
-                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
-                }
-                else checkDirections = false;
+                ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()+1);
+                ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                myMoves.add(temp);
+                myPosition = newPosition;
             }
             myPosition = startingPosition;
-            checkDirections = true;
-            while(checkDirections)
+            while(myPosition.getRow()+1<9 && myPosition.getColumn()+1<9)
             {
-                if(myPosition.getRow()+1<9 && myPosition.getColumn()+1<9)
-                {
-                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()+1);
-                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
-                }
-                else checkDirections = false;
+                ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()+1);
+                ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                myMoves.add(temp);
+                myPosition = newPosition;
             }
             myPosition = startingPosition;
-            checkDirections = true;
-            while(checkDirections)
+            while(myPosition.getRow()+1<9 && myPosition.getColumn()-1>0)
             {
-                if(myPosition.getRow()+1<9 && myPosition.getColumn()-1>0)
-                {
-                    ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()-1);
-                    ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
-                }
-                else checkDirections = false;
+                ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()-1);
+                ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                myMoves.add(temp);
+                myPosition = newPosition;
             }
             myPosition = startingPosition;
         }
