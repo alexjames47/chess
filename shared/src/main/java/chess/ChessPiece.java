@@ -2,7 +2,6 @@ package chess;
 
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Vector;
 
 /**
  * Represents a single chess piece
@@ -70,8 +69,7 @@ public class ChessPiece {
         {return queenMoves(board,myPosition);}
         if (board.board[myPosition.getRow()-1][myPosition.getColumn()-1].getPieceType() == PieceType.ROOK)
         {return rookMoves(board,myPosition);}
-        Collection<ChessMove> o = null;
-        return o;
+        return null;
     }
 
     public Collection<ChessMove> bishopMoves(ChessBoard board, ChessPosition myPosition)
