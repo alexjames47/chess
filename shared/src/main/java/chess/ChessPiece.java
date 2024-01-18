@@ -447,6 +447,74 @@ public class ChessPiece {
         return myMoves;
     }
     public Collection<ChessMove> pawnMoves(ChessBoard board, ChessPosition myPosition){
+        if (board.board[myPosition.getRow()-1][myPosition.getColumn()-1].getTeamColor() == ChessGame.TeamColor.WHITE)
+        {return whitePawnMoves(board,myPosition);}
+        else if(board.board[myPosition.getRow()-1][myPosition.getColumn()-1].getTeamColor() == ChessGame.TeamColor.BLACK)
+        {return blackPawnMoves(board,myPosition);}
+        return null;
+    }
+
+    public Collection<ChessMove> whitePawnMoves(ChessBoard board, ChessPosition myPosition)
+    {
+        HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
+        ChessPosition startingPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn());
+        if (myPosition.getRow() + 1 > 0 && myPosition.getColumn() - 1 > 0) // SW
+        {
+            ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() - 1);
+            if (!board.SpaceIsEmpty(newPosition)) {
+                if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
+                else
+                {
+                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
+            }
+        }
+        myPosition = startingPosition;
+        if (myPosition.getRow() + 1 > 0 && myPosition.getColumn() + 1 < 9) //SE
+        {
+            ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn() + 1);
+            if (!board.SpaceIsEmpty(newPosition)) {
+                if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
+                else
+                {
+                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
+            }
+        }
+        myPosition = startingPosition;
+        if (myPosition.getRow() + 1 > 0)  //S
+        {
+            ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
+            if (!board.SpaceIsEmpty(newPosition)) {}
+            else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
+        }
+        myPosition = startingPosition;
+        if (myPosition.getRow() == 2) //InitialMove
+        {
+            ChessPosition newPosition = new ChessPosition(myPosition.getRow() + 2, myPosition.getColumn());
+            ChessPosition middlePosition = new ChessPosition(myPosition.getRow() + 1, myPosition.getColumn());
+            if(board.SpaceIsEmpty(newPosition)&&board.SpaceIsEmpty(middlePosition))
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
+        }
+        myPosition = startingPosition;
+        return myMoves;
+    }
+
+    public Collection<ChessMove> blackPawnMoves(ChessBoard board, ChessPosition myPosition)
+    {
         HashSet<ChessMove> myMoves = new HashSet<ChessMove>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn());
         if (myPosition.getRow() - 1 > 0 && myPosition.getColumn() - 1 > 0) // NW
@@ -482,6 +550,18 @@ public class ChessPiece {
             ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
             if (!board.SpaceIsEmpty(newPosition)) {}
             else
+            {
+                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                myMoves.add(temp);
+                myPosition = newPosition;
+            }
+        }
+        myPosition = startingPosition;
+        if (myPosition.getRow() == 7) //InitialMove
+        {
+            ChessPosition newPosition = new ChessPosition(myPosition.getRow() - 2, myPosition.getColumn());
+            ChessPosition middlePosition = new ChessPosition(myPosition.getRow() - 1, myPosition.getColumn());
+            if(board.SpaceIsEmpty(newPosition) && board.SpaceIsEmpty(middlePosition))
             {
                 ChessMove temp = new ChessMove(startingPosition, newPosition, null);
                 myMoves.add(temp);
