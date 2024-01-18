@@ -465,9 +465,24 @@ public class ChessPiece {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
                 else
                 {
-                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
+                    if(newPosition.getRow() == 8)
+                    {
+                        ChessMove temp1 = new ChessMove(startingPosition, newPosition, PieceType.QUEEN);
+                        myMoves.add(temp1);
+                        ChessMove temp2 = new ChessMove(startingPosition, newPosition, PieceType.KNIGHT);
+                        myMoves.add(temp2);
+                        ChessMove temp3 = new ChessMove(startingPosition, newPosition, PieceType.ROOK);
+                        myMoves.add(temp3);
+                        ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
+                        myMoves.add(temp4);
+                        myPosition = newPosition;
+                    }
+                    else
+                    {
+                        ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                        myMoves.add(temp);
+                        myPosition = newPosition;
+                    }
                 }
             }
         }
@@ -479,9 +494,24 @@ public class ChessPiece {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
                 else
                 {
-                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
+                    if(newPosition.getRow() == 8)
+                    {
+                        ChessMove temp1 = new ChessMove(startingPosition, newPosition, PieceType.QUEEN);
+                        myMoves.add(temp1);
+                        ChessMove temp2 = new ChessMove(startingPosition, newPosition, PieceType.KNIGHT);
+                        myMoves.add(temp2);
+                        ChessMove temp3 = new ChessMove(startingPosition, newPosition, PieceType.ROOK);
+                        myMoves.add(temp3);
+                        ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
+                        myMoves.add(temp4);
+                        myPosition = newPosition;
+                    }
+                    else
+                    {
+                        ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                        myMoves.add(temp);
+                        myPosition = newPosition;
+                    }
                 }
             }
         }
@@ -492,9 +522,24 @@ public class ChessPiece {
             if (!board.SpaceIsEmpty(newPosition)) {}
             else
             {
-                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
-                myMoves.add(temp);
-                myPosition = newPosition;
+                if(newPosition.getRow() == 8)
+                {
+                    ChessMove temp1 = new ChessMove(startingPosition, newPosition, PieceType.QUEEN);
+                    myMoves.add(temp1);
+                    ChessMove temp2 = new ChessMove(startingPosition, newPosition, PieceType.KNIGHT);
+                    myMoves.add(temp2);
+                    ChessMove temp3 = new ChessMove(startingPosition, newPosition, PieceType.ROOK);
+                    myMoves.add(temp3);
+                    ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
+                    myMoves.add(temp4);
+                    myPosition = newPosition;
+                }
+                else
+                {
+                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
             }
         }
         myPosition = startingPosition;
@@ -524,9 +569,24 @@ public class ChessPiece {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
                 else
                 {
-                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
+                    if(newPosition.getRow() == 1)
+                    {
+                        ChessMove temp1 = new ChessMove(startingPosition, newPosition, PieceType.QUEEN);
+                        myMoves.add(temp1);
+                        ChessMove temp2 = new ChessMove(startingPosition, newPosition, PieceType.KNIGHT);
+                        myMoves.add(temp2);
+                        ChessMove temp3 = new ChessMove(startingPosition, newPosition, PieceType.ROOK);
+                        myMoves.add(temp3);
+                        ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
+                        myMoves.add(temp4);
+                        myPosition = newPosition;
+                    }
+                    else
+                    {
+                        ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                        myMoves.add(temp);
+                        myPosition = newPosition;
+                    }
                 }
             }
         }
@@ -538,9 +598,24 @@ public class ChessPiece {
                 if (board.GetSpaceColor(startingPosition) == board.GetSpaceColor(newPosition)) {}
                 else
                 {
-                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
-                    myMoves.add(temp);
-                    myPosition = newPosition;
+                    if(newPosition.getRow() == 1)
+                    {
+                        ChessMove temp1 = new ChessMove(startingPosition, newPosition, PieceType.QUEEN);
+                        myMoves.add(temp1);
+                        ChessMove temp2 = new ChessMove(startingPosition, newPosition, PieceType.KNIGHT);
+                        myMoves.add(temp2);
+                        ChessMove temp3 = new ChessMove(startingPosition, newPosition, PieceType.ROOK);
+                        myMoves.add(temp3);
+                        ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
+                        myMoves.add(temp4);
+                        myPosition = newPosition;
+                    }
+                    else
+                    {
+                        ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                        myMoves.add(temp);
+                        myPosition = newPosition;
+                    }
                 }
             }
         }
@@ -551,9 +626,24 @@ public class ChessPiece {
             if (!board.SpaceIsEmpty(newPosition)) {}
             else
             {
-                ChessMove temp = new ChessMove(startingPosition, newPosition, null);
-                myMoves.add(temp);
-                myPosition = newPosition;
+                if(newPosition.getRow() == 1)
+                {
+                    ChessMove temp1 = new ChessMove(startingPosition, newPosition, PieceType.QUEEN);
+                    myMoves.add(temp1);
+                    ChessMove temp2 = new ChessMove(startingPosition, newPosition, PieceType.KNIGHT);
+                    myMoves.add(temp2);
+                    ChessMove temp3 = new ChessMove(startingPosition, newPosition, PieceType.ROOK);
+                    myMoves.add(temp3);
+                    ChessMove temp4 = new ChessMove(startingPosition, newPosition, PieceType.BISHOP);
+                    myMoves.add(temp4);
+                    myPosition = newPosition;
+                }
+                else
+                {
+                    ChessMove temp = new ChessMove(startingPosition, newPosition, null);
+                    myMoves.add(temp);
+                    myPosition = newPosition;
+                }
             }
         }
         myPosition = startingPosition;
