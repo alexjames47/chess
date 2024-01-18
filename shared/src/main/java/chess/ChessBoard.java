@@ -55,4 +55,20 @@ public class ChessBoard {
     public void resetBoard() {
         throw new RuntimeException("Not implemented");
     }
+
+    public boolean SpaceIsEmpty(ChessPosition position)
+    {
+        var temp1 = position.getRow();
+        var temp2 = position.getColumn();
+        if(board[temp1-1][temp2-1] != null) return false;
+        else return true;
+    }
+
+    public ChessGame.TeamColor GetSpaceColor(ChessPosition position)
+    {
+        var temp1 = position.getRow();
+        var temp2 = position.getColumn();
+        if(board[temp1-1][temp2-1] != null) return board[temp1-1][temp2-1].getTeamColor();
+        throw new RuntimeException("No Piece Found");
+    }
 }

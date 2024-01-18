@@ -64,33 +64,41 @@ public class ChessPiece {
             while(myPosition.getRow()-1>0 && myPosition.getColumn()-1>0)
             {
                 ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
+                if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
                 ChessMove temp = new ChessMove(startingPosition,newPosition,null);
                 myMoves.add(temp);
                 myPosition = newPosition;
+                if(!board.SpaceIsEmpty(myPosition)){break;}
             }
             myPosition = startingPosition;
             while(myPosition.getRow()-1>0 && myPosition.getColumn()+1<9)
             {
                 ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()+1);
+                if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
                 ChessMove temp = new ChessMove(startingPosition,newPosition,null);
                 myMoves.add(temp);
                 myPosition = newPosition;
+                if(!board.SpaceIsEmpty(myPosition)){break;}
             }
             myPosition = startingPosition;
             while(myPosition.getRow()+1<9 && myPosition.getColumn()+1<9)
             {
                 ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()+1);
+                if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
                 ChessMove temp = new ChessMove(startingPosition,newPosition,null);
                 myMoves.add(temp);
                 myPosition = newPosition;
+                if(!board.SpaceIsEmpty(myPosition)){break;}
             }
             myPosition = startingPosition;
             while(myPosition.getRow()+1<9 && myPosition.getColumn()-1>0)
             {
                 ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()-1);
+                if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
                 ChessMove temp = new ChessMove(startingPosition,newPosition,null);
                 myMoves.add(temp);
                 myPosition = newPosition;
+                if(!board.SpaceIsEmpty(myPosition)){break;}
             }
             myPosition = startingPosition;
         }
