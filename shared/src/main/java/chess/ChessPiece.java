@@ -435,7 +435,7 @@ public class ChessPiece {
         {return whitePawnMoves(board,myPosition);}
         else if(board.board[myPosition.getRow()-1][myPosition.getColumn()-1].getTeamColor() == ChessGame.TeamColor.BLACK)
         {return blackPawnMoves(board,myPosition);}
-        return null;
+        throw new RuntimeException("Invalid Pawn");
     }
 
     public Collection<ChessMove> whitePawnMoves(ChessBoard board, ChessPosition myPosition)
