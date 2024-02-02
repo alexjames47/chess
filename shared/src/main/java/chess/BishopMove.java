@@ -3,51 +3,34 @@ package chess;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class BishopMove implements PieceMove{
+public class BishopMove extends PieceMoveCalculator implements PieceMove{
     @Override
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
-        while(myPosition.getRow()-1>0 && myPosition.getColumn()-1>0) //NW
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
+        ChessPosition[] positionArray = new ChessPosition[]{startingPosition,myPosition};
+        int[][] pieceDirections = bishopDirections();
+        for(int i = 0; i < 4; i++){
+            while(withinBoard(positionArray[1],pieceDirections[i])){
+                myMoves.add(pieceMoveCalculator(positionArray, pieceDirections[i], board));
+                if(!board.SpaceIsEmpty(positionArray[1])){break;}
+            }
+            positionArray[1] = positionArray[0];
         }
-        myPosition = startingPosition;
-        while(myPosition.getRow()-1>0 && myPosition.getColumn()+1<9) //NE
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()+1);
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
-        }
-        myPosition = startingPosition;
-        while(myPosition.getRow()+1<9 && myPosition.getColumn()+1<9) //SE
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()+1);
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
-        }
-        myPosition = startingPosition;
-        while(myPosition.getRow()+1<9 && myPosition.getColumn()-1>0) //SW
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn()-1);
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
-        }
-        //myPosition = startingPosition;
+        myMoves.remove(null);
         return myMoves;
+    }
+
+    int[][] bishopDirections(){
+        int[][] directions = new int[4][2];
+        directions[0][0] = -1;
+        directions[0][1] = -1; //SW
+        directions[1][0] = -1;
+        directions[1][1] = 1;  //SE
+        directions[2][0] = 1;
+        directions[2][1] = 1; //NE
+        directions[3][0] = 1;
+        directions[3][1] = -1; //NW
+        return directions;
     }
 }

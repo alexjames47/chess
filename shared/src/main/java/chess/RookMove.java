@@ -22,16 +22,16 @@ public class RookMove extends PieceMoveCalculator implements PieceMove{
     }
 
     int[][] rookDirections(){
-        int[][] queenDirections = new int[4][2];
+        int[][] directions = new int[4][2];
 
-        queenDirections[0][0] = -1;
-        queenDirections[0][1] = 0;  //S
-        queenDirections[1][0] = 1;
-        queenDirections[1][1] = 0;  //N
-        queenDirections[2][0] = 0;
-        queenDirections[2][1] = 1;  //E
-        queenDirections[3][0] = 0;
-        queenDirections[3][1] = -1; //W
-        return queenDirections;
+        directions[0][0] = -1;
+        directions[0][1] = 0;  //S
+        directions[1][0] = 1;
+        directions[1][1] = 0;  //N
+        directions[2][0] = 0;
+        directions[2][1] = 1;  //E
+        directions[3][0] = 0;
+        directions[3][1] = -1; //W
+        return directions;
     }
 }
