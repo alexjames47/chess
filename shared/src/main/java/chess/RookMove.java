@@ -3,51 +3,35 @@ package chess;
 import java.util.Collection;
 import java.util.HashSet;
 
-public class RookMove implements PieceMove{
+public class RookMove extends PieceMoveCalculator implements PieceMove{
     @Override
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
-        while(myPosition.getRow()-1>0) //N
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn());
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
+        ChessPosition[] positionArray = new ChessPosition[]{startingPosition,myPosition};
+        int[][] pieceDirections = rookDirections();
+        for(int i = 0; i < 4; i++){
+            while(withinBoard(positionArray[1],pieceDirections[i])){
+                myMoves.add(pieceMoveCalculator(positionArray, pieceDirections[i], board));
+                if(!board.SpaceIsEmpty(positionArray[1])){break;}
+            }
+            positionArray[1] = positionArray[0];
         }
-        myPosition = startingPosition;
-        while(myPosition.getRow()+1<9) //S
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow()+1, myPosition.getColumn());
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
-        }
-        myPosition = startingPosition;
-        while(myPosition.getColumn()+1<9) //E
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn()+1);
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
-        }
-        myPosition = startingPosition;
-        while(myPosition.getColumn()-1>0) //W
-        {
-            ChessPosition newPosition = new ChessPosition(myPosition.getRow(), myPosition.getColumn()-1);
-            if(!board.SpaceIsEmpty(newPosition)){if(board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)){break;}}
-            ChessMove temp = new ChessMove(startingPosition,newPosition,null);
-            myMoves.add(temp);
-            myPosition = newPosition;
-            if(!board.SpaceIsEmpty(myPosition)){break;}
-        }
-        //myPosition = startingPosition;
+        myMoves.remove(null);
         return myMoves;
+    }
+
+    int[][] rookDirections(){
+        int[][] queenDirections = new int[4][2];
+
+        queenDirections[0][0] = -1;
+        queenDirections[0][1] = 0;  //S
+        queenDirections[1][0] = 1;
+        queenDirections[1][1] = 0;  //N
+        queenDirections[2][0] = 0;
+        queenDirections[2][1] = 1;  //E
+        queenDirections[3][0] = 0;
+        queenDirections[3][1] = -1; //W
+        return queenDirections;
     }
 }
