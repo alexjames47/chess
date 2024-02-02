@@ -12,9 +12,12 @@ public class QueenMove extends PieceMoveCalculator implements PieceMove {
         int[][] pieceDirections = queenDirections();
         for(int i = 0; i < 8; i++){
             while(withinBoard(positionArray[1],pieceDirections[i])){
-                myMoves.add(pieceMoveCalculator(positionArray, pieceDirections, board));
+                myMoves.add(pieceMoveCalculator(positionArray, pieceDirections[i], board));
+                if(!board.SpaceIsEmpty(positionArray[1])){break;}
             }
+            positionArray[1] = positionArray[0];
         }
+        myMoves.remove(null);
         return myMoves;
     }
 

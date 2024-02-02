@@ -3,17 +3,18 @@ package chess;
 import java.util.HashSet;
 
 public class PieceMoveCalculator {
-    ChessMove pieceMoveCalculator(ChessPosition[] positionArray, int[][] pieceDirections, ChessBoard board){
+    ChessMove pieceMoveCalculator(ChessPosition[] positionArray, int[] pieceDirections, ChessBoard board){
 
         ChessPosition startingPosition = positionArray[0];
         ChessPosition myPosition = positionArray[1];
 
-        ChessPosition newPosition = new ChessPosition(myPosition.getRow()-1, myPosition.getColumn()-1);
+        ChessPosition newPosition = new ChessPosition(myPosition.getRow()+pieceDirections[0], myPosition.getColumn()+pieceDirections[1]);
         if(!board.SpaceIsEmpty(newPosition)){
             if(board.GetSpaceColor(startingPosition)!=board.GetSpaceColor(newPosition)){
-                positionArray[0] = newPosition;
+                positionArray[1] = newPosition;
                 return new ChessMove(startingPosition,newPosition,null);
             } else if (board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)) {
+                positionArray[1] = newPosition;
                 return null;
             }
         } else if (board.SpaceIsEmpty(newPosition)) {
