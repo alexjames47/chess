@@ -35,6 +35,10 @@ public class ChessPosition {
         return col;
     }
 
+    public ChessPosition modPosition(int row, int col){
+        return new ChessPosition(this.getRow()+row,this.getColumn()+col);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

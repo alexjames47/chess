@@ -7,8 +7,8 @@ public class PieceMoveCalculator {
 
         ChessPosition startingPosition = positionArray[0];
         ChessPosition myPosition = positionArray[1];
-
         ChessPosition newPosition = new ChessPosition(myPosition.getRow()+pieceDirections[0], myPosition.getColumn()+pieceDirections[1]);
+
         if(!board.SpaceIsEmpty(newPosition)){
             if(board.GetSpaceColor(startingPosition)!=board.GetSpaceColor(newPosition)){
                 positionArray[1] = newPosition;
