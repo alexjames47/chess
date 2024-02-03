@@ -44,6 +44,6 @@ public class PieceMoveCalculator {
 
             }
         }
-
+        return true;
     }
 }
