@@ -18,7 +18,13 @@ public class RookMove extends PieceMoveCalculator implements PieceMove{
             positionArray[1] = positionArray[0];
         }
         myMoves.remove(null);
-        return myMoves;
+        HashSet<ChessMove> queenMoves = new HashSet<>();
+        for(ChessMove temp : myMoves){
+            if(!endagersKing(temp,board)){
+                queenMoves.add(temp);
+            }
+        }
+        return queenMoves;
     }
 
     int[][] rookDirections(){

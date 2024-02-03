@@ -30,4 +30,8 @@ public class PieceMoveCalculator {
                 && myPosition.getColumn() + pieceDirection[1] < 9
                 && myPosition.getColumn() + pieceDirection[1] > 0);
     }
+
+    boolean endagersKing(ChessMove move, ChessBoard board){
+        return false;
+    }
 }
