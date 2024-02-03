@@ -18,6 +18,10 @@ public class ChessBoard {
 
     }
 
+    public ChessBoard(ChessBoard board) {
+        this.board = board.getBoard().clone();
+    }
+
     /**
      * Adds a chess piece to the chessboard
      *
@@ -47,6 +51,10 @@ public class ChessBoard {
         var temp2 = position.getColumn();
         if(board[temp1-1][temp2-1] != null) return board[temp1-1][temp2-1];
         throw new RuntimeException("No Piece Found");
+    }
+
+    public ChessPiece[][] getBoard(){
+        return board;
     }
 
     /**

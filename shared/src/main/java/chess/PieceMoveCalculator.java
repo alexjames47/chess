@@ -30,6 +30,20 @@ public class PieceMoveCalculator {
     }
 
     boolean doesNotEndagerKing(ChessMove move, ChessBoard board){
-        return true;
+        ChessBoard newBoard = new ChessBoard(board);
+        ChessGame.TeamColor turn = board.GetSpaceColor(move.getStartPosition());
+        int initRow = move.getStartPosition().getRow();
+        int initCol = move.getStartPosition().getColumn();
+        int newRow = move.getEndPosition().getRow();
+        int newCol = move.getEndPosition().getColumn();
+        newBoard.board[newRow][newCol] = board.board[initRow][initCol];
+        newBoard.board[initRow][initCol] = null;
+
+        for(ChessPiece[] rowArray : newBoard.board){
+            for(ChessPiece temp : rowArray){
+
+            }
+        }
+
     }
 }

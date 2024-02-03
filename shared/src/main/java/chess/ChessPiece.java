@@ -14,7 +14,6 @@ public class ChessPiece {
 
     ChessGame.TeamColor pC;
     ChessPiece.PieceType t;
-    ChessPosition pP;
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         pC = pieceColor;
         t = type;
@@ -77,12 +76,12 @@ public class ChessPiece {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof ChessPiece that)) return false;
-        return pC == that.pC && t == that.t && Objects.equals(pP, that.pP);
+        return pC == that.pC && t == that.t;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(pC, t, pP);
+        return Objects.hash(pC, t);
     }
 
     @Override
@@ -90,7 +89,6 @@ public class ChessPiece {
         return "ChessPiece{" +
                 "pC=" + pC +
                 ", t=" + t +
-                ", pP=" + pP +
                 '}';
     }
 }
