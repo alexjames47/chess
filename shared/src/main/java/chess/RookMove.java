@@ -20,7 +20,7 @@ public class RookMove extends PieceMoveCalculator implements PieceMove{
         myMoves.remove(null);
         HashSet<ChessMove> queenMoves = new HashSet<>();
         for(ChessMove temp : myMoves){
-            if(!endagersKing(temp,board)){
+            if(doesNotEndagerKing(temp, board)){
                 queenMoves.add(temp);
             }
         }

@@ -1,7 +1,5 @@
 package chess;
 
-import java.util.HashSet;
-
 public class PieceMoveCalculator {
     ChessMove pieceMoveCalculator(ChessPosition[] positionArray, int[] pieceDirections, ChessBoard board){
 
@@ -31,7 +29,7 @@ public class PieceMoveCalculator {
                 && myPosition.getColumn() + pieceDirection[1] > 0);
     }
 
-    boolean endagersKing(ChessMove move, ChessBoard board){
-        return false;
+    boolean doesNotEndagerKing(ChessMove move, ChessBoard board){
+        return true;
     }
 }

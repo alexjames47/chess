@@ -67,7 +67,7 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
         myMoves.remove(null);
         HashSet<ChessMove> pawnMoves = new HashSet<>();
         for(ChessMove temp : myMoves){
-            if(!endagersKing(temp,board)){
+            if(doesNotEndagerKing(temp, board)){
                 if((temp.getEndPosition().getRow() == 1 || temp.getEndPosition().getRow() == 8)){
                     pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.BISHOP));
                     pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.KNIGHT));
