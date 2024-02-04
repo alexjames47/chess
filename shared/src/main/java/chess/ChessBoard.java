@@ -31,7 +31,6 @@ public class ChessBoard {
     public void addPiece(ChessPosition position, ChessPiece piece) {
         //throw new RuntimeException("Not implemented");
         ChessPiece temp = new ChessPiece(piece.getTeamColor(), piece.getPieceType());
-        temp.pP = position;
         int r = position.getRow();
         int c = position.getColumn();
         board[r-1][c-1] = temp;
@@ -75,25 +74,16 @@ public class ChessBoard {
         for(int i = 0; i < 8; i++)
         {
             board[i][0] = new ChessPiece(temp, ChessPiece.PieceType.ROOK);
-            board[i][0].pP = new ChessPosition(i+1,1);
             board[i][1] = new ChessPiece(temp, ChessPiece.PieceType.KNIGHT);
-            board[i][1].pP = new ChessPosition(i+1,2);
             board[i][2] = new ChessPiece(temp, ChessPiece.PieceType.BISHOP);
-            board[i][2].pP = new ChessPosition(i+1,3);
             board[i][3] = new ChessPiece(temp, ChessPiece.PieceType.QUEEN);
-            board[i][3].pP = new ChessPosition(i+1,4);
             board[i][4] = new ChessPiece(temp, ChessPiece.PieceType.KING);
-            board[i][4].pP = new ChessPosition(i+1,5);
             board[i][5] = new ChessPiece(temp, ChessPiece.PieceType.BISHOP);
-            board[i][5].pP = new ChessPosition(i+1,6);
             board[i][6] = new ChessPiece(temp, ChessPiece.PieceType.KNIGHT);
-            board[i][6].pP = new ChessPosition(i+1,7);
             board[i][7] = new ChessPiece(temp, ChessPiece.PieceType.ROOK);
-            board[i][7].pP = new ChessPosition(i+1,8);
             for(int k = 0; k < 8; k++)
             {
                 board[i+j][k] = new ChessPiece(temp, ChessPiece.PieceType.PAWN);
-                board[i+j][k].pP = new ChessPosition(i+j+1,k+1);
             }
             i+=6;
             j-=2;

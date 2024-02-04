@@ -51,18 +51,19 @@ public class PieceMoveCalculator {
             for(int j = 0; j < 8; j++){
                 ChessPosition temp = new ChessPosition(i,j);
                 if(newBoard.getPiece(temp) != null && newBoard.getPiece(temp).getTeamColor() == turn){
-                    kingIsSafe = doesNotEndangerKingHelper(board.getPiece(temp).pieceMoves(newBoard,temp), board);
+                    kingIsSafe = doesNotEndangerKingHelper(board.getPiece(temp).pieceMoves(newBoard,temp));
                 }
             }
         }
         return kingIsSafe;
     }
 
-    boolean doesNotEndangerKingHelper(Collection<ChessMove> Moves, ChessBoard board){
+    boolean doesNotEndangerKingHelper(Collection<ChessMove> Moves){
         boolean kingIsSafe = true;
         for(ChessMove temp : Moves){
-            if(temp.getHarrassesKing()){
+            if (temp.getHarrassesKing()) {
                 kingIsSafe = false;
+                break;
             }
         }
         return kingIsSafe;
