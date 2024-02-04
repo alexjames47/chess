@@ -176,9 +176,9 @@ public class ChessPiece {
 
     public String tinyToString(){
         if(pC == ChessGame.TeamColor.WHITE){
-            return t.name().substring(0,1);
+            return t.name().substring(0,2);
         }
-        return t.name().substring(0,1).toUpperCase();
+        return t.name().substring(0,2).toLowerCase();
     }
 
     @Override

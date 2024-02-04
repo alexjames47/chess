@@ -131,15 +131,15 @@ public class ChessBoard {
     @Override
     public String toString() {
         StringBuilder temp = new StringBuilder();
-        for(int i = 0; i < 8; i++)
+        for(int i = 7; i >= 0; i--)
         {
             for(int j = 0; j < 8; j++)
             {
                 if(board[i][j] == null){
-                    temp.append("| ");
+                    temp.append(" || ");
                 }
                 else{
-                    temp.append(board[i][j].tinyToString());
+                    temp.append(" ").append(board[i][j].tinyToString()).append(" ");
                 }
             }
             temp.append("\n");
