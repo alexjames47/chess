@@ -127,4 +127,23 @@ public class ChessBoard {
     public int hashCode() {
         return Arrays.deepHashCode(board);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder temp = new StringBuilder();
+        for(int i = 0; i < 8; i++)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                if(board[i][j] == null){
+                    temp.append("| ");
+                }
+                else{
+                    temp.append(board[i][j].tinyToString());
+                }
+            }
+            temp.append("\n");
+        }
+        return temp.toString();
+    }
 }

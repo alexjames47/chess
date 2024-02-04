@@ -174,6 +174,13 @@ public class ChessPiece {
         return Objects.hash(pC, t);
     }
 
+    public String tinyToString(){
+        if(pC == ChessGame.TeamColor.WHITE){
+            return t.name().substring(0,1);
+        }
+        return t.name().substring(0,1).toUpperCase();
+    }
+
     @Override
     public String toString() {
         return "ChessPiece{" +
