@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class BishopMove extends PieceMoveCalculator implements PieceMove{
     @Override
-    public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
+    public Collection<ChessMove> myPieceMoves(ChessBoard board, ChessPosition myPosition) {
         HashSet<ChessMove> myMoves = new HashSet<>();
         ChessPosition startingPosition = new ChessPosition(myPosition.getRow(),myPosition.getColumn());
         ChessPosition[] positionArray = new ChessPosition[]{startingPosition,myPosition};

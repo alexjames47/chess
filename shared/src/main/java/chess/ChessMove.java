@@ -13,7 +13,7 @@ public class ChessMove {
     ChessPosition endPosition;
     ChessPiece.PieceType promotionPiece;
 
-    boolean harrassesKing = false;
+    boolean harassesKing = false;
     public ChessMove(ChessPosition startPosition, ChessPosition endPosition,
                      ChessPiece.PieceType promotionPiece) {
         this.startPosition = startPosition;
@@ -45,12 +45,12 @@ public class ChessMove {
         return this.promotionPiece;
     }
 
-    public void setHarrassesKing(){
-        harrassesKing = true;
+    public void setHarassesKing(){
+        harassesKing = true;
     }
 
-    public boolean getHarrassesKing() {
-        return harrassesKing;
+    public boolean getHarassesKing() {
+        return harassesKing;
     }
 
     @Override

@@ -1,7 +1,5 @@
 package chess;
 
-import java.util.Collection;
-
 public class PieceMoveCalculator {
     ChessMove pieceMoveCalculator(ChessPosition[] positionArray, int[] pieceDirections, ChessBoard board){
 
@@ -13,7 +11,7 @@ public class PieceMoveCalculator {
             if(board.GetSpaceColor(startingPosition)!=board.GetSpaceColor(newPosition)){
                 ChessMove temp = new ChessMove(startingPosition,newPosition,null);
                 if(board.getPiece(newPosition).getPieceType() == ChessPiece.PieceType.KING){
-                    temp.setHarrassesKing();
+                    temp.setHarassesKing();
                 }
                 positionArray[1] = newPosition;
                 return temp;

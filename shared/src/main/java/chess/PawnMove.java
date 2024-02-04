@@ -5,7 +5,7 @@ import java.util.HashSet;
 
 public class PawnMove extends PieceMoveCalculator implements PieceMove{
     @Override
-    public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
+    public Collection<ChessMove> myPieceMoves(ChessBoard board, ChessPosition myPosition) {
         if (board.board[myPosition.getRow()-1][myPosition.getColumn()-1].getTeamColor() == ChessGame.TeamColor.WHITE) {
             return whitePawnMoves(board,myPosition);
         }
