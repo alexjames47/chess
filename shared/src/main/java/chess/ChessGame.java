@@ -13,14 +13,12 @@ public class ChessGame {
     ChessBoard board;
     TeamColor turn = TeamColor.WHITE;
     public ChessGame() {
-
     }
 
     /**
      * @return Which team's turn it is
      */
     public TeamColor getTeamTurn() {
-        //throw new RuntimeException("Not implemented");
         return turn;
     }
 
@@ -30,8 +28,6 @@ public class ChessGame {
      * @param team the team whose turn it is
      */
     public void setTeamTurn(TeamColor team) {
-
-        //throw new RuntimeException("Not implemented");
         turn = team;
     }
 
@@ -51,7 +47,9 @@ public class ChessGame {
      * startPosition
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
-        throw new RuntimeException("Not implemented");
+        Collection<ChessMove> Moves =  this.board.getPiece(startPosition).myPieceMoves(board, startPosition);
+        KingEndagerCalculator temp = new KingEndagerCalculator();
+        return temp.removeEndangeringMoves(Moves,board);
     }
 
     /**
@@ -82,7 +80,28 @@ public class ChessGame {
      * @return True if the specified team is in checkmate
      */
     public boolean isInCheckmate(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+        KingEndagerCalculator kingCalc = new KingEndagerCalculator();
+        boolean kingIsSafe = true;
+        if(!isInCheck(teamColor)) {
+            return false;
+        }
+        else {
+            for(int row = 1; row < 9; row++){
+                for(int col = 1; col < 9; col++){
+                    ChessPosition position = new ChessPosition(row,col);
+                    if(board.getBoard()[row-1][col-1] != null && board.getPiece(position).getTeamColor() == teamColor) {
+                        Collection<ChessMove> temp;
+                        temp = board.getPiece(position).pieceMoves(board,position);
+                        for(ChessMove move : temp){
+                            if(kingCalc.isKingNotEndangeredByMove(move, board)){
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     /**

@@ -133,6 +133,8 @@ public class ChessBoard {
         StringBuilder temp = new StringBuilder();
         for(int i = 7; i >= 0; i--)
         {
+            temp.append(i+1);
+            temp.append("  ");
             for(int j = 0; j < 8; j++)
             {
                 if(board[i][j] == null){
@@ -144,6 +146,7 @@ public class ChessBoard {
             }
             temp.append("\n");
         }
+        temp.append("     1   2   3   4   5   6   7   8\n");
         return temp.toString();
     }
 }

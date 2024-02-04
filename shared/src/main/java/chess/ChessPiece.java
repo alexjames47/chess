@@ -61,10 +61,7 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        //throw new RuntimeException("Not implemented");
-        Collection<ChessMove> Moves = myPieceMoves(board, myPosition);
-        KingEndagerCalculator temp = new KingEndagerCalculator();
-        return temp.removeEndangeringMoves(Moves,board);
+        return myPieceMoves(board, myPosition);
     }
 
     public Collection<ChessMove> myPieceMoves(ChessBoard board, ChessPosition myPosition) {

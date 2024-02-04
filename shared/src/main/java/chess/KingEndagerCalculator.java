@@ -8,14 +8,14 @@ public class KingEndagerCalculator {
     Collection<ChessMove> removeEndangeringMoves(Collection<ChessMove> chessMoves, ChessBoard board){
         HashSet<ChessMove> newMoves = new HashSet<>();
         for(ChessMove temp : chessMoves){
-            if(doesNotEndangerKing(temp, board)){
+            if(isKingNotEndangeredByMove(temp, board)){
                 newMoves.add(temp);
             }
         }
         return newMoves;
     }
 
-    boolean doesNotEndangerKing(ChessMove move, ChessBoard board){
+    boolean isKingNotEndangeredByMove(ChessMove move, ChessBoard board){
         ChessBoard newBoard = new ChessBoard(board);
         ChessGame.TeamColor turn = board.GetSpaceColor(move.getStartPosition());
         int initRow = move.getStartPosition().getRow();
@@ -24,9 +24,7 @@ public class KingEndagerCalculator {
         int newCol = move.getEndPosition().getColumn();
         newBoard.board[newRow-1][newCol-1] = board.board[initRow-1][initCol-1];
         newBoard.board[initRow-1][initCol-1] = null;
-
-        boolean kingIsSafe = isKingSafe(newBoard, turn);
-        return kingIsSafe;
+        return isKingSafe(newBoard, turn);
     }
 
     boolean isKingSafe(ChessBoard newBoard, ChessGame.TeamColor turn){
