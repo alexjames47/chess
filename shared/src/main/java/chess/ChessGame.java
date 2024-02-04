@@ -71,8 +71,8 @@ public class ChessGame {
      * @return True if the specified team is in check
      */
     public boolean isInCheck(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
-
+        KingEndagerCalculator temp = new KingEndagerCalculator();
+        return !temp.isKingSafe(this.board,teamColor);
     }
 
     /**
@@ -103,7 +103,7 @@ public class ChessGame {
      */
     public void setBoard(ChessBoard board) {
         //throw new RuntimeException("Not implemented");
-        board.resetBoard();
+        this.board = new ChessBoard(board);
     }
 
     /**

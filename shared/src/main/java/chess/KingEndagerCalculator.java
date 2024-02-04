@@ -25,24 +25,26 @@ public class KingEndagerCalculator {
         newBoard.board[newRow-1][newCol-1] = board.board[initRow-1][initCol-1];
         newBoard.board[initRow-1][initCol-1] = null;
 
-        boolean kingIsSafe = isKingEndangered(newBoard, turn);
+        boolean kingIsSafe = isKingSafe(newBoard, turn);
         return kingIsSafe;
     }
 
-    boolean isKingEndangered(ChessBoard newBoard, ChessGame.TeamColor turn){
+    boolean isKingSafe(ChessBoard newBoard, ChessGame.TeamColor turn){
         boolean kingIsSafe = true;
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
                 ChessPosition temp = new ChessPosition(i+1,j+1);
-                if(newBoard.board[i][j] != null && newBoard.getPiece(temp).getTeamColor() != turn){
-                    kingIsSafe = isKingEndangeredHelper(newBoard.getPiece(temp).myPieceMoves(newBoard,temp));
+                if(newBoard.board[i][j] != null && newBoard.getPiece(temp).getTeamColor() != turn) {
+                    kingIsSafe = isKingSafeHelper(newBoard.getPiece(temp).myPieceMoves(newBoard, temp));
+                    if (!kingIsSafe) break;
                 }
             }
+            if(!kingIsSafe) break;
         }
         return kingIsSafe;
     }
 
-    boolean isKingEndangeredHelper(Collection<ChessMove> Moves){
+    boolean isKingSafeHelper(Collection<ChessMove> Moves){
         boolean kingIsSafe = true;
         for(ChessMove temp : Moves){
             if (temp.getHarassesKing()) {
