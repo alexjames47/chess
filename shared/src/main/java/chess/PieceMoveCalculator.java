@@ -1,5 +1,7 @@
 package chess;
 
+import java.util.Collection;
+
 public class PieceMoveCalculator {
     ChessMove pieceMoveCalculator(ChessPosition[] positionArray, int[] pieceDirections, ChessBoard board){
 
@@ -9,8 +11,12 @@ public class PieceMoveCalculator {
 
         if(!board.SpaceIsEmpty(newPosition)){
             if(board.GetSpaceColor(startingPosition)!=board.GetSpaceColor(newPosition)){
+                ChessMove temp = new ChessMove(startingPosition,newPosition,null);
+                if(board.getPiece(newPosition).getPieceType() == ChessPiece.PieceType.KING){
+                    temp.setHarrassesKing();
+                }
                 positionArray[1] = newPosition;
-                return new ChessMove(startingPosition,newPosition,null);
+                return temp;
             } else if (board.GetSpaceColor(startingPosition)==board.GetSpaceColor(newPosition)) {
                 positionArray[1] = newPosition;
                 return null;
@@ -29,7 +35,7 @@ public class PieceMoveCalculator {
                 && myPosition.getColumn() + pieceDirection[1] > 0);
     }
 
-    boolean doesNotEndagerKing(ChessMove move, ChessBoard board){
+    boolean doesNotEndangerKing(ChessMove move, ChessBoard board){
         ChessBoard newBoard = new ChessBoard(board);
         ChessGame.TeamColor turn = board.GetSpaceColor(move.getStartPosition());
         int initRow = move.getStartPosition().getRow();
@@ -39,11 +45,26 @@ public class PieceMoveCalculator {
         newBoard.board[newRow][newCol] = board.board[initRow][initCol];
         newBoard.board[initRow][initCol] = null;
 
-        for(ChessPiece[] rowArray : newBoard.board){
-            for(ChessPiece temp : rowArray){
+        boolean kingIsSafe = true;
 
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                ChessPosition temp = new ChessPosition(i,j);
+                if(newBoard.getPiece(temp) != null && newBoard.getPiece(temp).getTeamColor() == turn){
+                    kingIsSafe = doesNotEndangerKingHelper(board.getPiece(temp).pieceMoves(newBoard,temp), board);
+                }
             }
         }
-        return true;
+        return kingIsSafe;
+    }
+
+    boolean doesNotEndangerKingHelper(Collection<ChessMove> Moves, ChessBoard board){
+        boolean kingIsSafe = true;
+        for(ChessMove temp : Moves){
+            if(temp.getHarrassesKing()){
+                kingIsSafe = false;
+            }
+        }
+        return kingIsSafe;
     }
 }

@@ -20,7 +20,7 @@ public class BishopMove extends PieceMoveCalculator implements PieceMove{
         myMoves.remove(null);
         HashSet<ChessMove> bishopMoves = new HashSet<>();
         for(ChessMove temp : myMoves){
-            if(doesNotEndagerKing(temp, board)){
+            if(doesNotEndangerKing(temp, board)){
                 bishopMoves.add(temp);
             }
         }

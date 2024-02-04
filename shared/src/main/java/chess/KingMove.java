@@ -19,7 +19,7 @@ public class KingMove extends PieceMoveCalculator implements PieceMove{
         myMoves.remove(null);
         HashSet<ChessMove> kingMoves = new HashSet<>();
         for(ChessMove temp : myMoves){
-            if(doesNotEndagerKing(temp, board)){
+            if(doesNotEndangerKing(temp, board)){
                 kingMoves.add(temp);
             }
         }
