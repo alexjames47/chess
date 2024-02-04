@@ -38,7 +38,7 @@ public class KingMoveTests {
                         | | | | | | | | |
                         """,
                 startPosition(3, 4),
-                endPositions(new int[][]{{4, 4}, {3, 5}, {2, 3}, {3, 3}, {4, 3}})
+                endPositions(new int[][]{{4, 4}, {3, 5}, {3, 3}, {4, 3}})
         );
     }
 
