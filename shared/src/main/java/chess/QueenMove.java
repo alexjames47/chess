@@ -18,13 +18,7 @@ public class QueenMove extends PieceMoveCalculator implements PieceMove {
             positionArray[1] = positionArray[0];
         }
         myMoves.remove(null);
-        HashSet<ChessMove> queenMoves = new HashSet<>();
-        for(ChessMove temp : myMoves){
-            if(doesNotEndangerKing(temp, board)){
-                queenMoves.add(temp);
-            }
-        }
-        return queenMoves;
+        return myMoves;
     }
 
     int[][] queenDirections(){

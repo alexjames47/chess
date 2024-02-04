@@ -19,12 +19,7 @@ public class BishopMove extends PieceMoveCalculator implements PieceMove{
         }
         myMoves.remove(null);
         HashSet<ChessMove> bishopMoves = new HashSet<>();
-        for(ChessMove temp : myMoves){
-            if(doesNotEndangerKing(temp, board)){
-                bishopMoves.add(temp);
-            }
-        }
-        return bishopMoves;
+        return myMoves;
     }
 
     int[][] bishopDirections(){

@@ -17,13 +17,7 @@ public class KingMove extends PieceMoveCalculator implements PieceMove{
             positionArray[1] = positionArray[0];
         }
         myMoves.remove(null);
-        HashSet<ChessMove> kingMoves = new HashSet<>();
-        for(ChessMove temp : myMoves){
-            if(doesNotEndangerKing(temp, board)){
-                kingMoves.add(temp);
-            }
-        }
-        return kingMoves;
+        return myMoves;
     }
 
     int[][] kingDirections(){

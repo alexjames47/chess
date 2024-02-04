@@ -67,16 +67,14 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
         myMoves.remove(null);
         HashSet<ChessMove> pawnMoves = new HashSet<>();
         for(ChessMove temp : myMoves){
-            if(doesNotEndangerKing(temp, board)){
-                if((temp.getEndPosition().getRow() == 1 || temp.getEndPosition().getRow() == 8)){
-                    pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.BISHOP));
-                    pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.KNIGHT));
-                    pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.ROOK));
-                    pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.QUEEN));
-                }
-                else{
-                    pawnMoves.add(temp);
-                }
+            if((temp.getEndPosition().getRow() == 1 || temp.getEndPosition().getRow() == 8)){
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.BISHOP));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.KNIGHT));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.ROOK));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.QUEEN));
+            }
+            else{
+                pawnMoves.add(temp);
             }
         }
         return pawnMoves;

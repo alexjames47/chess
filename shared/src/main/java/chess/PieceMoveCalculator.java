@@ -35,37 +35,4 @@ public class PieceMoveCalculator {
                 && myPosition.getColumn() + pieceDirection[1] > 0);
     }
 
-    boolean doesNotEndangerKing(ChessMove move, ChessBoard board){
-        ChessBoard newBoard = new ChessBoard(board);
-        ChessGame.TeamColor turn = board.GetSpaceColor(move.getStartPosition());
-        int initRow = move.getStartPosition().getRow();
-        int initCol = move.getStartPosition().getColumn();
-        int newRow = move.getEndPosition().getRow();
-        int newCol = move.getEndPosition().getColumn();
-        newBoard.board[newRow-1][newCol-1] = board.board[initRow-1][initCol-1];
-        newBoard.board[initRow-1][initCol-1] = null;
-
-        boolean kingIsSafe = true;
-
-        for(int i = 0; i < 8; i++){
-            for(int j = 0; j < 8; j++){
-                ChessPosition temp = new ChessPosition(i+1,j+1);
-                if(newBoard.board[i][j] != null && newBoard.getPiece(temp).getTeamColor() != turn){
-                    kingIsSafe = doesNotEndangerKingHelper(board.getPiece(temp).pieceMoves(newBoard,temp));
-                }
-            }
-        }
-        return kingIsSafe;
-    }
-
-    boolean doesNotEndangerKingHelper(Collection<ChessMove> Moves){
-        boolean kingIsSafe = true;
-        for(ChessMove temp : Moves){
-            if (temp.getHarrassesKing()) {
-                kingIsSafe = false;
-                break;
-            }
-        }
-        return kingIsSafe;
-    }
 }
