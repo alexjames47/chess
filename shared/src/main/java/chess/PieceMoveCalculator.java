@@ -42,15 +42,15 @@ public class PieceMoveCalculator {
         int initCol = move.getStartPosition().getColumn();
         int newRow = move.getEndPosition().getRow();
         int newCol = move.getEndPosition().getColumn();
-        newBoard.board[newRow][newCol] = board.board[initRow][initCol];
-        newBoard.board[initRow][initCol] = null;
+        newBoard.board[newRow-1][newCol-1] = board.board[initRow-1][initCol-1];
+        newBoard.board[initRow-1][initCol-1] = null;
 
         boolean kingIsSafe = true;
 
         for(int i = 0; i < 8; i++){
             for(int j = 0; j < 8; j++){
-                ChessPosition temp = new ChessPosition(i,j);
-                if(newBoard.getPiece(temp) != null && newBoard.getPiece(temp).getTeamColor() == turn){
+                ChessPosition temp = new ChessPosition(i+1,j+1);
+                if(newBoard.board[i][j] != null && newBoard.getPiece(temp).getTeamColor() != turn){
                     kingIsSafe = doesNotEndangerKingHelper(board.getPiece(temp).pieceMoves(newBoard,temp));
                 }
             }

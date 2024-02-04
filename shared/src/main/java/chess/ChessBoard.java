@@ -18,8 +18,15 @@ public class ChessBoard {
 
     }
 
-    public ChessBoard(ChessBoard board) {
-        this.board = board.getBoard().clone();
+    public ChessBoard(ChessBoard oldBoard) {
+        for(int i = 0; i < 8; i++){
+            for(int j = 0; j < 8; j++){
+                if (oldBoard.getBoard()[i][j] != null) {
+                    this.board[i][j] = new ChessPiece(oldBoard.getBoard()[i][j]);
+                }
+
+            }
+        }
     }
 
     /**
@@ -48,8 +55,10 @@ public class ChessBoard {
         //throw new RuntimeException("Not implemented");
         var temp1 = position.getRow();
         var temp2 = position.getColumn();
-        if(board[temp1-1][temp2-1] != null) return board[temp1-1][temp2-1];
-        throw new RuntimeException("No Piece Found");
+        if(board[temp1-1][temp2-1] != null) {
+            return board[temp1-1][temp2-1];
+        }
+        return null;
     }
 
     public ChessPiece[][] getBoard(){

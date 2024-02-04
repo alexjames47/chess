@@ -19,6 +19,11 @@ public class ChessPiece {
         t = type;
     }
 
+    public ChessPiece(ChessPiece oldPiece){
+        pC = oldPiece.getTeamColor();
+        t = oldPiece.getPieceType();
+    }
+
     /**
      * The various different chess piece options
      */
