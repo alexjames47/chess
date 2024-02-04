@@ -81,7 +81,6 @@ public class ChessGame {
      */
     public boolean isInCheckmate(TeamColor teamColor) {
         KingEndagerCalculator kingCalc = new KingEndagerCalculator();
-        boolean kingIsSafe = true;
         if(!isInCheck(teamColor)) {
             return false;
         }

@@ -11,8 +11,6 @@ import java.util.Arrays;
  */
 public class ChessBoard {
 
-    //ArrayList<ChessPiece> cps = new ArrayList<>();
-
     ChessPiece[][] board = new ChessPiece[8][8];
     public ChessBoard() {
 
@@ -24,7 +22,6 @@ public class ChessBoard {
                 if (oldBoard.getBoard()[i][j] != null) {
                     this.board[i][j] = new ChessPiece(oldBoard.getBoard()[i][j]);
                 }
-
             }
         }
     }
@@ -131,6 +128,7 @@ public class ChessBoard {
     @Override
     public String toString() {
         StringBuilder temp = new StringBuilder();
+        temp.append("\n\n");
         for(int i = 7; i >= 0; i--)
         {
             temp.append(i+1);
