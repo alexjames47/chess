@@ -72,6 +72,7 @@ public class ChessGame {
      */
     public boolean isInCheck(TeamColor teamColor) {
         throw new RuntimeException("Not implemented");
+
     }
 
     /**
