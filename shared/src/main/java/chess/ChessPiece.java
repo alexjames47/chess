@@ -17,6 +17,8 @@ public class ChessPiece {
     boolean hasMoved = false;
 
     boolean canBeEnPassant = false;
+
+    boolean canCastle = false;
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         pC = pieceColor;
         t = type;
@@ -57,6 +59,22 @@ public class ChessPiece {
 
     public void setHasMoved() {
         this.hasMoved = true;
+    }
+
+    public boolean canBeEnPassant() {
+        return canBeEnPassant;
+    }
+
+    public void setCanBeEnPassant(boolean canBeEnPassant) {
+        this.canBeEnPassant = canBeEnPassant;
+    }
+
+    public boolean canCastle() {
+        return canCastle;
+    }
+
+    public void setCanCastle(boolean canCastle) {
+        this.canCastle = canCastle;
     }
 
     /**

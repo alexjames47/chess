@@ -64,12 +64,6 @@ public class ChessGame {
         int endCol = move.getEndPosition().getColumn();
         int startRow = move.getStartPosition().getRow();
         int startCol = move.getStartPosition().getColumn();
-        if(canCastle){
-
-        }
-        if(canEnPassant){
-
-        }
         if(board.getBoard()[startRow-1][startCol-1] != null
                 && validMoves(move.getStartPosition()).contains(move)
                 && board.getBoard()[startRow-1][startCol-1].getTeamColor() == turn){
@@ -82,7 +76,15 @@ public class ChessGame {
             }
             board.getBoard()[startRow-1][startCol-1] = null;
             changeTurn();
-        } else {
+        } else if(canCastle()){
+            if(board.getBoard()[startRow-1][startCol-1].getPieceType() == ChessPiece.PieceType.KING && endRow == startRow){
+                if(endCol == startCol-2 && board.getBoard()[0][0])
+            }
+        }
+        if(canEnPassant()){
+
+        }
+        else {
             throw new InvalidMoveException();
         }
 
@@ -100,21 +102,24 @@ public class ChessGame {
     boolean canCastle(){
         boolean canCastle = false;
         HashSet<ChessPiece> king = board.findPiece(turn, ChessPiece.PieceType.KING);
-        HashSet<ChessPiece> rooks = board.findPiece(turn, ChessPiece.PieceType.ROOK);
-        for(ChessPiece kingPiece : king){
-            if(kingPiece.hasMoved) return false;
-            for(ChessPiece rookPieces : rooks){
-                if(!rookPieces.hasMoved && board.isClearBetweenPositions()){
+        int[] rooksArray = board.findRowAndCol(turn, ChessPiece.PieceType.ROOK);
+        int[] kingArray = board.findRowAndCol(turn, ChessPiece.PieceType.KING);
+        ChessPosition kingPosition = new ChessPosition(kingArray[0],kingArray[1]);
 
-                }
+        if(board.getBoard()[kingArray[0]][kingArray[1]].hasMoved) return false;
+        for(int i = 0; i < rooksArray.length; i++){
+            ChessPosition rookPosition = new ChessPosition(rooksArray[i],rooksArray[i+1]);
+            if(!board.getBoard()[rooksArray[i]][rooksArray[i+1]].hasMoved
+                    && board.isClearBetweenPositions(rookPosition,kingPosition)){
+                board.getBoard()[rooksArray[i]][rooksArray[i+1]].setCanCastle(true);
+                canCastle = true;
             }
         }
-
         return canCastle;
     }
 
     boolean canEnPassant(){
-
+        return false;
     }
 
     /**
