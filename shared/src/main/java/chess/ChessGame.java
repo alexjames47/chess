@@ -73,8 +73,19 @@ public class ChessGame {
                 board.getBoard()[endRow-1][endCol-1] = board.getBoard()[startRow-1][startCol-1];
             }
             board.getBoard()[startRow-1][startCol-1] = null;
+            changeTurn();
         } else {
             throw new InvalidMoveException();
+        }
+
+    }
+
+    public void changeTurn(){
+        if(turn == TeamColor.WHITE){
+            turn = TeamColor.BLACK;
+        }
+        else if(turn == TeamColor.BLACK){
+            turn = TeamColor.WHITE;
         }
     }
 
