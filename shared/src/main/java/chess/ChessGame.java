@@ -59,7 +59,23 @@ public class ChessGame {
      * @throws InvalidMoveException if move is invalid
      */
     public void makeMove(ChessMove move) throws InvalidMoveException {
-        throw new RuntimeException("Not implemented");
+        int endRow = move.getEndPosition().getRow();
+        int endCol = move.getEndPosition().getColumn();
+        int startRow = move.getStartPosition().getRow();
+        int startCol = move.getStartPosition().getColumn();
+        if(board.getBoard()[startRow-1][startCol-1] != null
+                && validMoves(move.getStartPosition()).contains(move)
+                && board.getBoard()[startRow-1][startCol-1].getTeamColor() == turn){
+            if(move.getPromotionPiece() != null){
+                ChessGame.TeamColor pieceColor = board.getBoard()[startRow-1][startCol-1].getTeamColor();
+                board.getBoard()[endRow-1][endCol-1] = new ChessPiece(pieceColor, move.getPromotionPiece());
+            } else {
+                board.getBoard()[endRow-1][endCol-1] = board.getBoard()[startRow-1][startCol-1];
+            }
+            board.getBoard()[startRow-1][startCol-1] = null;
+        } else {
+            throw new InvalidMoveException();
+        }
     }
 
     /**
@@ -111,7 +127,26 @@ public class ChessGame {
      * @return True if the specified team is in stalemate, otherwise false
      */
     public boolean isInStalemate(TeamColor teamColor) {
-        throw new RuntimeException("Not implemented");
+        KingEndagerCalculator kingCalc = new KingEndagerCalculator();
+        if(!isInCheck(teamColor)) {
+            for(int row = 1; row < 9; row++){
+                for(int col = 1; col < 9; col++){
+                    ChessPosition position = new ChessPosition(row,col);
+                    if(board.getBoard()[row-1][col-1] != null && board.getPiece(position).getTeamColor() == teamColor) {
+                        Collection<ChessMove> temp;
+                        temp = board.getPiece(position).pieceMoves(board,position);
+                        for(ChessMove move : temp){
+                            if(kingCalc.isKingNotEndangeredByMove(move, board)){
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**

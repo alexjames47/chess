@@ -34,11 +34,16 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
         myMoves.remove(null);
         HashSet<ChessMove> pawnMoves = new HashSet<>();
         for(ChessMove temp : myMoves){
+            boolean harassesKing = false;
+            if(board.getBoard()[temp.getEndPosition().getRow()-1][temp.getEndPosition().getColumn()-1] != null){
+                harassesKing = (board.getBoard()[temp.getEndPosition().getRow()-1][temp.getEndPosition().getColumn()-1].getPieceType()
+                        == ChessPiece.PieceType.KING);
+            }
             if(temp.getEndPosition().getRow() == 1 || temp.getEndPosition().getRow() == 8){
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.BISHOP));
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.KNIGHT));
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.ROOK));
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.QUEEN));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.BISHOP, harassesKing));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.KNIGHT, harassesKing));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.ROOK, harassesKing));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.QUEEN, harassesKing));
             }
             else{
                 pawnMoves.add(temp);
@@ -67,11 +72,16 @@ public class PawnMove extends PieceMoveCalculator implements PieceMove{
         myMoves.remove(null);
         HashSet<ChessMove> pawnMoves = new HashSet<>();
         for(ChessMove temp : myMoves){
+            boolean harassesKing = false;
+            if(board.getBoard()[temp.getEndPosition().getRow()-1][temp.getEndPosition().getColumn()-1] != null){
+                harassesKing = (board.getBoard()[temp.getEndPosition().getRow()-1][temp.getEndPosition().getColumn()-1].getPieceType()
+                        == ChessPiece.PieceType.KING);
+            }
             if((temp.getEndPosition().getRow() == 1 || temp.getEndPosition().getRow() == 8)){
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.BISHOP));
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.KNIGHT));
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.ROOK));
-                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.QUEEN));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.BISHOP, harassesKing));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.KNIGHT, harassesKing));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.ROOK, harassesKing));
+                pawnMoves.add(new ChessMove(temp.getStartPosition(),temp.getEndPosition(), ChessPiece.PieceType.QUEEN, harassesKing));
             }
             else{
                 pawnMoves.add(temp);
