@@ -76,15 +76,7 @@ public class ChessGame {
             }
             board.getBoard()[startRow-1][startCol-1] = null;
             changeTurn();
-        } else if(canCastle()){
-            if(board.getBoard()[startRow-1][startCol-1].getPieceType() == ChessPiece.PieceType.KING && endRow == startRow){
-                if(endCol == startCol-2 && board.getBoard()[0][0])
-            }
-        }
-        if(canEnPassant()){
-
-        }
-        else {
+        } else {
             throw new InvalidMoveException();
         }
 
@@ -97,29 +89,6 @@ public class ChessGame {
         else if(turn == TeamColor.BLACK){
             turn = TeamColor.WHITE;
         }
-    }
-
-    boolean canCastle(){
-        boolean canCastle = false;
-        HashSet<ChessPiece> king = board.findPiece(turn, ChessPiece.PieceType.KING);
-        int[] rooksArray = board.findRowAndCol(turn, ChessPiece.PieceType.ROOK);
-        int[] kingArray = board.findRowAndCol(turn, ChessPiece.PieceType.KING);
-        ChessPosition kingPosition = new ChessPosition(kingArray[0],kingArray[1]);
-
-        if(board.getBoard()[kingArray[0]][kingArray[1]].hasMoved) return false;
-        for(int i = 0; i < rooksArray.length; i++){
-            ChessPosition rookPosition = new ChessPosition(rooksArray[i],rooksArray[i+1]);
-            if(!board.getBoard()[rooksArray[i]][rooksArray[i+1]].hasMoved
-                    && board.isClearBetweenPositions(rookPosition,kingPosition)){
-                board.getBoard()[rooksArray[i]][rooksArray[i+1]].setCanCastle(true);
-                canCastle = true;
-            }
-        }
-        return canCastle;
-    }
-
-    boolean canEnPassant(){
-        return false;
     }
 
     /**
