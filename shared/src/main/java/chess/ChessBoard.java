@@ -2,6 +2,7 @@ package chess;
 
 
 import java.util.Arrays;
+import java.util.HashSet;
 
 /**
  * A chessboard that can hold and rearrange chess pieces.
@@ -49,13 +50,64 @@ public class ChessBoard {
      * position
      */
     public ChessPiece getPiece(ChessPosition position) {
-        //throw new RuntimeException("Not implemented");
         var temp1 = position.getRow();
         var temp2 = position.getColumn();
         if(board[temp1-1][temp2-1] != null) {
             return board[temp1-1][temp2-1];
         }
         return null;
+    }
+
+    public HashSet<ChessPiece> findPiece(ChessGame.TeamColor color, ChessPiece.PieceType type) {
+        HashSet<ChessPiece> temp = new HashSet<>();
+        for(int i = 7; i >= 0; i--)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                if(board[i][j] != null && board[i][j].getPieceType() == type){
+                    temp.add(board[i][j]);
+                }
+            }
+        }
+        return temp;
+    }
+
+    public HashSet<ChessPosition> findPosition(ChessGame.TeamColor color, ChessPiece.PieceType type) {
+        HashSet<ChessPosition> temp = new HashSet<>();
+        for(int i = 7; i >= 0; i--)
+        {
+            for(int j = 0; j < 8; j++)
+            {
+                if(board[i][j] != null && board[i][j].getPieceType() == type){
+                    temp.add(new ChessPosition(i+1,j+1));
+                }
+            }
+        }
+        return temp;
+    }
+
+    public int[] findRowAndCol(ChessGame.TeamColor color, ChessPiece.PieceType type){
+        int[] rowAndCol = new int[20];
+        HashSet<ChessPosition> positions = findPosition(color,type);
+        int counter = 0;
+        for(ChessPosition temp : positions){
+            rowAndCol[counter] = temp.getRow();
+            rowAndCol[counter+1] = temp.getColumn();
+            counter += 2;
+        }
+        return rowAndCol;
+    }
+
+    public boolean isClearBetweenPositions(ChessPosition kingPosition, ChessPosition rookPosition){
+        int kingCol = kingPosition.getColumn();
+        int rookCol = rookPosition.getColumn();
+        int counter = kingCol+1;
+        while(counter != rookCol){
+            if(board[kingPosition.getRow()][counter] != null) return false;
+            if(kingCol > rookCol) counter--;
+            if(kingCol < rookCol) counter++;
+        }
+        return true;
     }
 
     public ChessPiece[][] getBoard(){

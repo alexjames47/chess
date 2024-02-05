@@ -13,6 +13,10 @@ public class ChessPiece {
 
     ChessGame.TeamColor pC;
     ChessPiece.PieceType t;
+
+    boolean hasMoved = false;
+
+    boolean canBeEnPassant = false;
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
         pC = pieceColor;
         t = type;
@@ -49,6 +53,10 @@ public class ChessPiece {
     public PieceType getPieceType() {
         //throw new RuntimeException("Not implemented");
         return t;
+    }
+
+    public void setHasMoved() {
+        this.hasMoved = true;
     }
 
     /**

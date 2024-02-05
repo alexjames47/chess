@@ -1,6 +1,7 @@
 package chess;
 
 import java.util.Collection;
+import java.util.HashSet;
 
 /**
  * For a class that can manage a chess game, making moves on a board
@@ -63,6 +64,12 @@ public class ChessGame {
         int endCol = move.getEndPosition().getColumn();
         int startRow = move.getStartPosition().getRow();
         int startCol = move.getStartPosition().getColumn();
+        if(canCastle){
+
+        }
+        if(canEnPassant){
+
+        }
         if(board.getBoard()[startRow-1][startCol-1] != null
                 && validMoves(move.getStartPosition()).contains(move)
                 && board.getBoard()[startRow-1][startCol-1].getTeamColor() == turn){
@@ -71,6 +78,7 @@ public class ChessGame {
                 board.getBoard()[endRow-1][endCol-1] = new ChessPiece(pieceColor, move.getPromotionPiece());
             } else {
                 board.getBoard()[endRow-1][endCol-1] = board.getBoard()[startRow-1][startCol-1];
+                board.getBoard()[endRow-1][endCol-1].setHasMoved();
             }
             board.getBoard()[startRow-1][startCol-1] = null;
             changeTurn();
@@ -80,13 +88,33 @@ public class ChessGame {
 
     }
 
-    public void changeTurn(){
+    void changeTurn(){
         if(turn == TeamColor.WHITE){
             turn = TeamColor.BLACK;
         }
         else if(turn == TeamColor.BLACK){
             turn = TeamColor.WHITE;
         }
+    }
+
+    boolean canCastle(){
+        boolean canCastle = false;
+        HashSet<ChessPiece> king = board.findPiece(turn, ChessPiece.PieceType.KING);
+        HashSet<ChessPiece> rooks = board.findPiece(turn, ChessPiece.PieceType.ROOK);
+        for(ChessPiece kingPiece : king){
+            if(kingPiece.hasMoved) return false;
+            for(ChessPiece rookPieces : rooks){
+                if(!rookPieces.hasMoved && board.isClearBetweenPositions()){
+
+                }
+            }
+        }
+
+        return canCastle;
+    }
+
+    boolean canEnPassant(){
+
     }
 
     /**
